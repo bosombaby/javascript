@@ -1,12 +1,19 @@
-const person = {
-    name: 'Alice',
-    age: 20
-};
+const name = '小王', age = 17
 
-function sayHello() {
-    console.log(`Hello, my name is ${this.name}, I'm ${this.age} years old.`);
+const obj = {
+    name: '小张',
+    objAge: this.age,
+    myFun: function (fm, t) {
+        console.log(this.name + '年龄' + this.age)
+        console.log(fm + t)
+    }
 }
 
-sayHello.apply(person);
-sayHello.call(person);
+const db = {
+    name: '小李',
+    age: 18
+}
 
+obj.myFun.call(db, '北京', '上海')
+obj.myFun.apply(db, ['北京', '上海'])
+obj.myFun.bind(db, '北京', '上海')()
