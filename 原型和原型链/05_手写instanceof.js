@@ -22,5 +22,7 @@ class Person {
         console.log(`${this.name}`);
     }
 }
+
+
 const p1 = new Person('张三', 14)
 console.log(myInstanceof(p1, Person));
