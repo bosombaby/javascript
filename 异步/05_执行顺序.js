@@ -17,3 +17,6 @@ console.log('script start');// 1 主线程执行同步任务
 test1()
 console.log('script end'); // 4
 
+
+
+
