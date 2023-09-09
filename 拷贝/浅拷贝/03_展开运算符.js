@@ -18,5 +18,5 @@ const user2 = {
     }
 }
 
-const res = Object.assign({}, user1, user2)
+const res = { ...user1, ...user2 }
 console.log(res);
