@@ -14,6 +14,6 @@ const db = {
     age: 18
 }
 
+obj.myFun.bind(db, '北京', '上海')()
 obj.myFun.call(db, '北京', '上海')
 obj.myFun.apply(db, ['北京', '上海'])
-obj.myFun.bind(db, '北京', '上海')()
