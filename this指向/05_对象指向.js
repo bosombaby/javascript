@@ -1,7 +1,15 @@
-function func() {
-    console.log(this.x)
+let x = 10
+let fn2 = () => {
+    console.log(this.x);
 }
 
-obj = { x: 1 }
-obj.func = func
-obj.func() // 1
+const obj = {
+    x: 1,
+    fn1(){
+        console.log(this.x);
+    },
+    fn2
+}
+
+obj.fn1()
+obj.fn2()
