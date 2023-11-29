@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .item-a{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            z-index: 1;
+        }
+        .item-b{
+            position: fixed;
+            width: 200px;
+            top: 0;
+            bottom: 0;
+            background-color: skyblue;
+            overflow: scroll;
+        }
+        .item-c{
+            width: 100px;
+            height: 2000px;
+            background-color: green;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <!-- 2.一个div-a，宽度200，高度200，背景红色，靠左上角放至
+    一个div-b，宽度200，背景蓝色，在a下方，撑满剩余的高度
+    在b中放至一个div-c，宽度100，高度为2000，背景绿色，b支持垂直滚动条 -->
+    <div class="item-a">
+
+    </div>
+
+    <div class="item-b">
+        <div class="item-c"></div>
+    </div>
+
+
+
+</body>
+</html>
