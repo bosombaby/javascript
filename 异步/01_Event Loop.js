@@ -1,8 +1,7 @@
-console.log('Hello');
-
+console.log('Hello')
 
 setTimeout(() => {
-    console.log('Event');
+  console.log('Event')
 }, 3000)
 
-console.log('Loop');
+console.log('Loop')

@@ -19,17 +19,20 @@
 //     })
 // })
 
-
 const promise4 = Promise.resolve('调用成功')
-promise4.then(data => {
-    console.log(data, promise4);
-}).catch(error => {
-    console.log(error);
-})
+promise4
+  .then((data) => {
+    console.log(data, promise4)
+  })
+  .catch((error) => {
+    console.log(error)
+  })
 
 const promise5 = Promise.reject('调用失败')
-promise5.then(data => {
-    console.log(data);
-}).catch(error => {
-    console.log(error, promise5);
-})
+promise5
+  .then((data) => {
+    console.log(data)
+  })
+  .catch((error) => {
+    console.log(error, promise5)
+  })
