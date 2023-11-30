@@ -1,28 +1,27 @@
+// 能否在向上查找的原型链中，找到和目标匹配的显示原型
+
 function myInstanceof(target, origin) {
-    if (typeof target === null || typeof target !== 'object') return false
-    if (typeof origin !== 'function')
-        throw ('origin must be function')
-    let proto = Object.getPrototypeOf(target)
+  if (typeof target === null || typeof target !== "object") return false;
+  if (typeof origin !== "function") throw "origin must be function";
 
-    while (proto) {
-        if (proto === origin.prototype) return true
-        proto = Object.getPrototypeOf(proto)
-    }
+  let proto = Object.getPrototypeOf(target);
+  while (proto) {
+    if (proto === origin.prototype) return true;
 
-    return false
+    proto = Object.getPrototypeOf(proto);
+  }
+  return false;
 }
-
 
 class Person {
-    constructor(name, age) {
-        this.name = name
-        this.age = age
-    }
-    sayHello() {
-        console.log(`${this.name}`);
-    }
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  sayHello() {
+    console.log(`${this.name}`);
+  }
 }
 
-
-const p1 = new Person('张三', 14)
-console.log(myInstanceof(p1, Person));
+const p1 = new Person("张三", 14);
+console.log(myInstanceof(p1, Object));
