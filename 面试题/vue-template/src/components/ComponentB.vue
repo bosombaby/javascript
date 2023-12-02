@@ -1,16 +1,16 @@
 <template>输入框B：<input type="text" v-model="inputValue" /></template>
 
 <script setup>
-import { ref } from "vue";
-import { storeToRefs } from "pinia";
+import { ref } from 'vue'
+import { storeToRefs } from 'pinia'
 
 // 使用store
-import { useInputStore } from "./../store/index";
-const inputStore = useInputStore();
+import { useInputStore } from './../store/index'
+const inputStore = useInputStore()
 
-const { inputValue } = storeToRefs(inputStore);
+const { inputValue } = storeToRefs(inputStore)
 
-console.log(inputValue.value);
+console.log(inputValue.value)
 </script>
 
 <style lang="scss" scoped></style>
