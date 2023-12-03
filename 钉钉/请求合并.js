@@ -5,6 +5,7 @@ function sendTasks() {
   taskQueue = []
 }
 
+// 缓存优化，promise异步
 export function debounce(task, callNow = false) {
   taskQueue.push(task)
 
