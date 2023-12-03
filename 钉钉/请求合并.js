@@ -1,0 +1,24 @@
+let taskQueue = []
+let timer = null
+function sendTasks() {
+  console.log(taskQueue)
+  taskQueue = []
+}
+
+export function debounce(task) {
+  taskQueue.push(task)
+  if (timer) clearTimeout(timer)
+  timer = setTimeout(() => {
+    sendTasks()
+  }, 100)
+}
+
+for (let i = 0; i < 10; i++) {
+  debounce(i)
+}
+
+setTimeout(() => {
+  for (let i = 10; i < 100; i++) {
+    debounce(i)
+  }
+}, 1000)
