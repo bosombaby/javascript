@@ -1,8 +1,11 @@
 let taskQueue = []
 let timer = null
 function sendTasks() {
-  if (taskQueue.length) console.log(taskQueue)
-  taskQueue = []
+  if (taskQueue.length) {
+    // console.log是发送请求的操作
+    console.log('Sending tasks:', taskQueue)
+    taskQueue = []
+  }
 }
 
 // 缓存优化，promise异步
