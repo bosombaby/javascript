@@ -25,6 +25,7 @@ export function triggerRequest(task, callNow) {
   debounce(task, callNow)
 }
 
+// 使用暴露的方法
 for (let i = 0; i < 10; i++) {
   triggerRequest(i, true)
 }
