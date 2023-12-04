@@ -4,7 +4,6 @@ const obj = {
   c: { e: 2, f: 3 },
   g: null,
 }
-
 function flatten(res, obj, keyname) {
   for (let key in obj) {
     if (typeof obj[key] === 'object' && obj[key] !== null) {
@@ -19,7 +18,6 @@ function flatten(res, obj, keyname) {
 
 function flattenObj(obj) {
   let res = {}
-
   for (let key in obj) {
     if (typeof obj[key] === 'object' && obj[key] !== null)
       flatten(res, obj[key], key)
