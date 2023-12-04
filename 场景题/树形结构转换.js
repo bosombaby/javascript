@@ -11,8 +11,8 @@ let list = [
 ]
 
 function convert(list) {
-  let map = {}
   let result = []
+  let map = {}
 
   list.forEach((item) => {
     map[item.id] = { ...item, children: [] }
@@ -30,5 +30,16 @@ function convert(list) {
   return result
 }
 
-let result = convert(list)
-console.log(result)
+let result = []
+function reverseConvert(list) {
+  list.forEach((item) => {
+    if (item.children.length) reverseConvert(item.children)
+    const { id, name, parentId } = item
+    result.push({ id, name, parentId })
+  })
+}
+
+const result1 = convert(list)
+console.log(result1)
+reverseConvert(result1)
+console.log(result.sort((a, b) => a.id - b.id))
