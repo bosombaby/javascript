@@ -9,7 +9,7 @@ function sendTasks() {
 }
 
 // 缓存优化，promise异步
-export function debounce(task, callNow = false) {
+function debounce(task, callNow = false) {
   taskQueue.push(task)
 
   if (callNow) sendTasks()
@@ -21,12 +21,16 @@ export function debounce(task, callNow = false) {
   }
 }
 
+export function triggerRequest(task, callNow) {
+  debounce(task, callNow)
+}
+
 for (let i = 0; i < 10; i++) {
-  debounce(i, true)
+  triggerRequest(i, true)
 }
 
 setTimeout(() => {
   for (let i = 10; i < 100; i++) {
-    debounce(i)
+    triggerRequest(i)
   }
 }, 100)
