@@ -1,37 +1,36 @@
 let taskQueue = []
 let timer = null
+const delayTime = 100
+
 function sendTasks() {
   if (taskQueue.length) {
-    // console.log是发送请求的操作
-    console.log('Sending tasks:', taskQueue)
+    console.log('发送合并请求', taskQueue)
     taskQueue = []
   }
 }
 
-// 缓存优化，promise异步
-function debounce(task, callNow = false) {
-  taskQueue.push(task)
-
+//后续可以缓存优化、promise异步、事件筛选
+function debounce(task, callNow) {
+  if (!taskQueue.includes(task)) taskQueue.push(task)
   if (callNow) sendTasks()
   else {
     if (timer) clearTimeout(timer)
     timer = setTimeout(() => {
       sendTasks()
-    }, 100)
+    }, delayTime)
   }
 }
 
-export function triggerRequest(task, callNow) {
+export default function triggerRequest(task, callNow = false) {
   debounce(task, callNow)
 }
 
-// 使用暴露的方法
 for (let i = 0; i < 10; i++) {
   triggerRequest(i, true)
 }
 
 setTimeout(() => {
-  for (let i = 10; i < 100; i++) {
+  for (let i = 100; i < 200; i++) {
     triggerRequest(i)
   }
-}, 100)
+}, 1000)
