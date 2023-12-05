@@ -14,3 +14,4 @@ Object.defineProperty(obj, 'name', {
 })
 
 obj.name = 111
+obj.name
