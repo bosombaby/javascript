@@ -1,4 +1,4 @@
-Promise.MyAll = function (promises) {
+Promise.myAll = function (promises) {
   let result = []
   return new Promise((resolve, reject) => {
     promises.forEach((item, index) => {
@@ -28,7 +28,7 @@ const p3 = new Promise((resolve, reject) => {
 
 const p4 = Promise.reject(4)
 
-Promise.MyAll([p1, p2, p3])
+Promise.myAll([p1, p2, p3])
   .then((res) => console.log(res))
   .catch((err) => console.log(err)) // 2秒后打印 [
 
