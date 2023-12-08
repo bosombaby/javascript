@@ -23,3 +23,13 @@ const p1 = promise
   })
 
 console.log(p1)
+
+Promise.prototype.myCatch = function (reject) {
+  return this.then(null, reject)
+}
+
+let p = Promise.reject('Something went wrong')
+
+p.myCatch((err) => {
+  console.log(err)
+}) // 输出：Something went wrong
