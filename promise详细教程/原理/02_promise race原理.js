@@ -1,8 +1,14 @@
 Promise.myRace = function (promises) {
   return new Promise((resolve, reject) => {
-    for (let item of promises) {
-      Promise.resolve(item).then(resolve, reject)
-    }
+    promises.forEach((item) => {
+      Promise.resolve(item)
+        .then((res) => {
+          resolve(res)
+        })
+        .catch((err) => {
+          reject(err)
+        })
+    })
   })
 }
 
@@ -19,7 +25,7 @@ const p3 = new Promise((resolve, reject) => {
 })
 
 const p4 = Promise.reject('p4 rejected')
-Promise.myRace([p2, p3, p1])
+Promise.myRace([p2, p3])
   .then((res) => {
     console.log(res)
   })
