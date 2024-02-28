@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .lazy-load {
+        width: 80%;
+        height: 400px;
+        margin: 1200px auto;
+        border: 2px solid pink;
+      }
+
+      .img-list {
+        display: flex;
+        height: 100%;
+        padding: 0 20px;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .img-list .img-item {
+        display: flex;
+        height: 170px;
+        width: 170px;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid skyblue;
+      }
+
+      .img-item img {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+    <title>图片懒加载-原生方法</title>
+  </head>
+  <body>
+    <div class="lazy-load">
+      <ul class="img-list">
+        <li class="img-item">
+          <img data-src="./images/0.jpeg" alt="" />
+          <span>矿泉水</span>
+        </li>
+        <li class="img-item">
+          <img data-src="./images/1.jpeg" alt="" />
+          <span>矿泉水</span>
+        </li>
+        <li class="img-item">
+          <img data-src="./images/2.png" alt="" />
+          <span>矿泉水</span>
+        </li>
+        <li class="img-item">
+          <img data-src="./images/3.png" alt="" />
+          <span>矿泉水</span>
+        </li>
+        <li class="img-item">
+          <img data-src="./images/4.png" alt="" />
+          <span>矿泉水</span>
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      const imgs = document.getElementsByTagName("img");
+      const viewHeight = document.documentElement.clientHeight;
+
+      function lazyload() {
+        for (let i = 0; i < imgs.length; i++) {
+          const item = imgs[i];
+
+          const distance = viewHeight - item.getBoundingClientRect().top + 100;
+          if (distance >= 0) {
+            item.src = item.getAttribute("data-src");
+            console.log("加载");
+          }
+        }
+      }
+
+      lazyload();
+
+      // 后期进行节流优化
+      window.addEventListener("scroll", lazyload);
+    </script>
+  </body>
+</html>
