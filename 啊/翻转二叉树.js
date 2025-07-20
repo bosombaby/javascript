@@ -1,3 +1,5 @@
+// 名称：翻转二叉树
+// 描述：
 /**
  * 实现翻转二叉树
  * 例如
@@ -9,15 +11,20 @@
  * / |
  * c b
  */
-const invertTree = function (root) {}
+// 考察: 树和二叉树
+function invertTree(root) {
+  if (!root) return null;
+  [root.left, root.right] = [invertTree(root.right), invertTree(root.left)];
+  return root;
+}
 
 const ensure = (output, expect, message) => {
   if (JSON.stringify(output) === JSON.stringify(expect)) {
-    console.log(`${message} ok`)
+    console.log(`${message} ok`);
   } else {
-    console.log(`${message} fail`)
+    console.log(`${message} fail`);
   }
-}
+};
 
 const test = function () {
   const input = {
@@ -48,7 +55,7 @@ const test = function () {
         right: null,
       },
     },
-  }
+  };
 
   const expect = {
     val: 1,
@@ -78,11 +85,12 @@ const test = function () {
         right: null,
       },
     },
-  }
+  };
 
-  const output = invertTree(input)
-  ensure(output, expect, 'test')
-}
+  const output = invertTree(input);
+
+  ensure(output, expect, "test");
+};
 
 // 输出 test ok表示测试成功
-test()
+test();
