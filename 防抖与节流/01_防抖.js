@@ -8,7 +8,7 @@ function debounce(fn, delay) {
     const args = arguments
 
     if (timer) clearTimeout(timer)
-    timer = setTimeout(() => {
+    timer = setTimeout(function () {
       fn.apply(context, args)
     }, delay)
   }
