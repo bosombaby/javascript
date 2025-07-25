@@ -1,12 +1,30 @@
-function reduceFlatArray(target, depth) {
-  return target.reduce((acc, cur) => {
-    if (Array.isArray(cur) && depth) acc.push(...reduceFlatArray(cur, depth - 1))
-    else acc.push(cur)
-
-    return acc
-  }, [])
+const obj = {
+  a: 1,
+  b: [1, 2, { c: true }],
+  c: { e: 2, f: 3 },
+  g: null,
 }
 
-const array = [1, [2, 3], [4, [5, 6, [7, 8]]]]
+function flatObj(res, target, prefix = '') {
+  if (typeof target !== 'object' || target === null) return target
 
-console.log(reduceFlatArray(array, 1))
+  for (let key in target) {
+    let newPrefix = ''
+    const newValue = target[key]
+    if (typeof newValue === 'object' && newValue !== null) {
+      if (prefix) newPrefix = Array.isArray(newValue) ? prefix[`${key}`] : `prefix.${key}`
+      flatObj(res, newValue, newPrefix)
+    } else {
+      res[key] = newValue
+    }
+  }
+}
+
+
+function main() {
+  let res = {}
+  flatObj(res, obj)
+  console.log(res)
+}
+
+main()
