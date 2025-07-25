@@ -1,13 +1,22 @@
-const originObj = {
-  name: 'zs',
-  age: 28,
-  children: { name: 'ls', age: 12 },
-  // symbol: Symbol('xxx'),
-  name: undefined,
-  date: new Date(),
-  // add: function () {},
+// 名称：对象扁平化
+// 描述：
+//  - 将嵌套对象扁平化为一层
+//  - 输入：
+// const obj = {
+//   a: 1,
+//   b: [1, 2, { c: true }],
+//   c: { e: 2, f: 3 },
+//   g: null,
+// }
+//  - 输出：
+/* {
+   a: 1,
+   'b[0]': 1,
+   'b[1]': 2,
+   'b[2].c': true,
+   'c.e': 2,
+   'c.f': 3,
+   g: null
 }
-const obj = structuredClone(originObj)
-obj.children.name = 111
-console.log(obj)
-console.log(originObj)
+*/
+// 考察: 递归、对象操作
