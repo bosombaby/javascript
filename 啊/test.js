@@ -1,35 +1,32 @@
-function redEvent() {
-  console.log("red");
-}
-function greenEvent() {
-  console.log("green");
-}
-function yellowEvent() {
-  console.log("yellow");
-}
-
-const lightEvent = {
-  red: redEvent,
-  green: greenEvent,
-  yellow: yellowEvent,
+const obj = {
+  a: 1,
+  b: [1, 2, { c: true }],
+  c: { e: 2, f: 3 },
+  g: null,
 };
 
-let timer = null;
-function task(key, delay) {
-  if (timer) clearTimeout(timer);
-  return new Promise((resolve, reject) => {
-    timer = setTimeout(() => {
-      resolve(lightEvent[key]());
-    }, delay);
-  });
+function flatObj(res, target, prefix = "") {
+  if (typeof target !== "object" || target === null) return target;
+
+  for (let key in target) {
+    let newPrefix = "";
+    const newValue = target[key];
+    if (typeof newValue === "object" && newValue !== null) {
+      if (prefix)
+        newPrefix = Array.isArray(newValue)
+          ? prefix[`${key}`]
+          : `prefix.${key}`;
+      flatObj(res, newValue, newPrefix);
+    } else {
+      res[key] = newValue;
+    }
+  }
 }
 
-async function taskRunner() {
-  await task("red", 3000);
-  await task("green", 2000);
-  await task("yellow", 1000);
-
-  taskRunner();
+function main() {
+  let res = {};
+  flatObj(res, obj);
+  console.log(res);
 }
 
-taskRunner();
+main();
