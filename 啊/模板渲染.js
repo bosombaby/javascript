@@ -1,10 +1,11 @@
-function parseTemplateString(templateString, data) {
+function parseTemplateString(template, data) {
   const regex = /\${(.*?)}/g;
-  const str = templateString.replace(regex, (match, key) => {
+
+  const result = template.replace(regex, (match, key) => {
     return eval(`data.${key}`);
   });
 
-  return str;
+  return result;
 }
 
 const templateString =
