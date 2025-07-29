@@ -19,7 +19,7 @@ function getName() {
   console.log(5)
 }
 
-Foo.getName() //2
-getName() //4
-Foo().getName() //1
-new Foo().getName() //3
+Foo.getName() // 2
+getName() // 4
+Foo().getName() // 1
+new Foo().getName() // 3
